@@ -68,8 +68,9 @@ export default function MealPlan({maxCalories, minCalories}) {
                 <div key={day}>
                     <h2>{day.toUpperCase()}</h2>
                     <ul>
-                        {mealPlan.week[day].meals.map((meal, index) => (
-                            <li key={index}>
+                        {mealPlan.week[day].meals.map((meal, id) => (
+                            <li key={id}>
+                                <h3></h3>
                                 <h3>{meal.title}</h3>
                                 <p>Ready in minutes: {meal.readyInMinutes}</p>
                                 <p>Servings: {meal.servings}</p>
