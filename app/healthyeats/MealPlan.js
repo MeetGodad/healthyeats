@@ -27,11 +27,9 @@ export default function MealPlan({maxCalories, minCalories}) {
             setMealPlan(data);
         };
     }
-
     useEffect(() => {
         loadMealPlan();
     }, [dietRestrictions , allergies]);
-
      return (
         <div>
             <div>
