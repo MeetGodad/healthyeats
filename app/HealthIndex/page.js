@@ -56,7 +56,7 @@ const HealthIndex = () => {
 
   return (
     <div>
-      <p>Let&apos;s Calculate your BMI and BMR</p>
+      <p>Lets Calculate your BMI and BMR</p>
 
         <div>
           <h3>Enter your Height : </h3>
