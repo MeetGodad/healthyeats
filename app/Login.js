@@ -17,7 +17,7 @@ const {user ,  gitHubSignIn, googleSignIn , firebaseSignOut} = useUserAuth();
             <div className="max-w-md w-full space-y-8">
                 <h1 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Welcome To HealthyEats , Eat Healty Live Wealthy </h1>
                 <h1 className="mt-6 text-center text-2xl font-extrabold text-gray-900">Hi {user.displayName} </h1>
-                <Link href="/HealthIndex" className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-800 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"> Let&apos;s Calculate Your BMI and BMR </Link>
+                <Link href="/HealthIndex" className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-800 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"> Let&rsquo;s Calculate Your BMI and BMR </Link>
                 <button onClick={firebaseSignOut} className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-800 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Sign Out </button>
             </div> ):(
             <div className="max-w-md w-full space-y-8">
