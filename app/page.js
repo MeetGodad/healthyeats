@@ -1,6 +1,6 @@
 
 import Link  from "next/link";
-import Login from "./healthyeats/Login";
+import Login from "./Login";
 export default function Page() {
 
   return (

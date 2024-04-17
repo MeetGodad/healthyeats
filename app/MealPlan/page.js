@@ -1,17 +1,19 @@
-"use client "
+"use client"
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 
-export default function MealPlan({maxCalories, minCalories}) {
+export default function MealPlan({searchParams}) {
+
+    let bmrNormal = searchParams.bmrNormal;
+    let bmrMedium = searchParams.bmrMedium;
     
     const [mealPlan, setMealPlan] = useState([]);
     const [medianCalories, setMedianCalories] = useState(0);
     const [dietRestrictions , setDietRestriction ] = useState("None");
     const [allergies, setAllergies] = useState("None");
 
-    const median = (minCalories, maxCalories) => {
-        const medianValue = Math.floor((minCalories + maxCalories) / 2);
+    const median = (bmrNormal, bmrMedium) => {
+        const medianValue = Math.floor((bmrNormal + bmrMedium) / 2);
         setMedianCalories(medianValue);
     }
     
@@ -22,7 +24,7 @@ export default function MealPlan({maxCalories, minCalories}) {
         return data;
     }
     const loadMealPlan = async () => {
-        if (maxCalories !== "") {
+        if (bmrMedium !== "") {
             const data = await fetchMealPlan({medianCalories});
             setMealPlan(data);
         };
