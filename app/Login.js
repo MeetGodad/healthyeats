@@ -17,12 +17,15 @@ const [hasMealPlan, setHasMealPlan] = useState(false);
 
 
 useEffect(() => {
-    let unsubscribe;
+    let unsubscribe = null;
   
-    if (user && user.uid) {
-      unsubscribe = loadMealPlan(user.uid, setHasMealPlan);
-    }
-  
+    const load = async () => {
+        if (user && user.uid) {
+          unsubscribe = await loadMealPlan(user.uid, setHasMealPlan);
+        }
+      };
+    
+      load();
     // Clean up the listener when the component unmounts
     return () => {
       if (unsubscribe) {

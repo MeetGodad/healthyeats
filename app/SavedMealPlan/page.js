@@ -12,12 +12,15 @@ const SavedMealPlanPage = () => {
   const userId = auth.currentUser ? auth.currentUser.uid : null;
 
   useEffect(() => {
-    let unsubscribe;
+    let unsubscribe = null;
   
-    if (userId) {
-      unsubscribe = loadMealPlan(userId, setMealPlan);
-    }
-  
+    const load = async () => {
+        if (userId) {
+          unsubscribe = await loadMealPlan(userId, setMealPlan);
+        }
+      };
+    
+      load();
     // Clean up the listener when the component unmounts
     return () => {
       if (unsubscribe) {
