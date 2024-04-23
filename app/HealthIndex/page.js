@@ -56,7 +56,7 @@ const HealthIndex = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-green-300 py-12 px-4 sm:px-6 lg:px-8" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\' viewBox=\'0 0 40 40\'%3E%3Cpath fill=\'%23d2f8d2\' fill-opacity=\'0.9\' d=\'M0 0h20v20H0V0zm20 20h20v20H20V20z\'/%3E%3C/svg%3E")'}}>
-      <p className="text-2xl font-bold mb-4">Let's Calculate your BMI and BMR</p>
+      <p className="text-2xl font-bold mb-4">Let&apos;s Calculate your BMI and BMR</p>
       <div className="p-6 max-w-2x1 mx-auto bg-green-900 rounded-xl shadow-md flex items-center space-x-4 border-4 border-green-900">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="mb-4">
@@ -109,7 +109,7 @@ const HealthIndex = () => {
               <p>BMR (Medium Exercise): {bmrMedium.toFixed(0)} calories</p>
             </div>
             <Link href={"/MealPlan?bmrNormal="+bmrNormal+"&bmrMedium"+bmrMedium} className="text-green-500">Let&apos;s Generate Your Meal Plan</Link>
-            </div>
+            </div>89+
             )}
       </div>
     </div>
