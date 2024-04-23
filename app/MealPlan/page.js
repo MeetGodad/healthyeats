@@ -1,10 +1,14 @@
 "use client"
 
 import { useState, useEffect } from "react";
+import { saveMealPlan , updateMealPlan} from "../servecies/healthyeats-service";
+import { useUserAuth } from "../_utils/auth-context";
+
 
 export default function MealPlan({searchParams}) {
     let bmrNormal = searchParams.bmrNormal;
     let bmrMedium = searchParams.bmrMedium;
+    const { user } = useUserAuth();
     
     const [mealPlan, setMealPlan] = useState([]);
     const [medianCalories, setMedianCalories] = useState(0);
@@ -17,20 +21,47 @@ export default function MealPlan({searchParams}) {
     }
     
     const fetchMealPlan = async ( {medianCalories} ) => {
-        const response = await fetch(`https://api.spoonacular.com/mealplanner/generate?apiKey=85fd6345419b416d9c744fd732238359&timeFrame=week&targetCalories=${medianCalories}&diet=${dietRestrictions}&exclude=${allergies}`);   
+        const response = await fetch(`https://api.spoonacular.com/mealplanner/generate?apiKey=3bf6dfc6c45a42e2b93c062a49076c17&timeFrame=week&targetCalories=${medianCalories}&diet=${dietRestrictions}&exclude=${allergies}`);   
         const data = await response.json();
         console.log(data);
         return data;
     }
-    const loadMealPlan = async () => {
-        if (bmrMedium !== "") {
-            const data = await fetchMealPlan({medianCalories});
-            setMealPlan(data);
-        };
-    }
     useEffect(() => {
+        let isCancelled = false;
+    
+        const loadMealPlan = async () => {
+            if (!isCancelled && bmrMedium !== "") {
+                const data = await fetchMealPlan({medianCalories});
+                setMealPlan(data);
+            };
+        };
         loadMealPlan();
-    }, [dietRestrictions , allergies]);
+        return () => {
+            isCancelled = true;
+        }
+    }, [bmrMedium, medianCalories, dietRestrictions, allergies]);
+
+    const handleSave = async () => {
+        try {
+          await saveMealPlan(user.uid, mealPlan); // Save the meal plan
+          alert('Meal plan saved successfully!');
+        } catch (error) {
+          console.error('Failed to save meal plan:', error);
+          alert('Failed to save meal plan. Please try again later.');
+        }
+      };
+
+      const handleUpdate = async () => {
+        try {
+          await updateMealPlan(user.uid, mealPlan); // Update the meal plan
+          alert('Meal plan updated successfully!');
+        } catch (error) {
+          console.error('Failed to update meal plan:', error);
+          alert('Failed to update meal plan. Please try again later.');
+        }
+      };
+      
+
     return (
         <div className={`flex justify-center items-center min-h-screen bg-green-400 text-white`}  style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'80\' viewBox=\'0 0 100 100\'%3E%3Cpolygon fill=\'%23ffffff\' fill-opacity=\'0.25\' points=\'50,0 100,0 0,100 0,50\'/%3E%3C/svg%3E")', backgroundPosition: '50% 50%'}} >
             <div className={`p-6 max-w-7xl mx-auto rounded-xl shadow-md flex flex-col items-center space-y-4 border-4 border-white bg-green-900`}>    
@@ -69,7 +100,7 @@ export default function MealPlan({searchParams}) {
                     onChange={(e) => setAllergies(e.target.value)}
                     className=" w-full px-3 py-2 border border-green-300 rounded-md text-green-950 "/>
                 </div>
-            {dietRestrictions != "None"  && mealPlan.week ?
+                {dietRestrictions != "None"  && mealPlan.week ?
                     Object.keys(mealPlan.week).map((day) => (
                     <div key={day} className="w-full">
                         <h2>{day.toUpperCase()}</h2>
@@ -88,7 +119,11 @@ export default function MealPlan({searchParams}) {
                 ))
                 : (
                     <p>Please Select Dietary Restrictions .....</p>)}
+                
+                <button onClick={handleSave} className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-800 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Save Meal Plan</button>
+                <button onClick={handleUpdate} className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-800 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Update Meal Plan</button>
             </div>
+
         </div>
     );
 }
