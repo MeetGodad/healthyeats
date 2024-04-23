@@ -109,7 +109,7 @@ const HealthIndex = () => {
               <p>BMR (Medium Exercise): {bmrMedium.toFixed(0)} calories</p>
             </div>
             <Link href={"/MealPlan?bmrNormal="+bmrNormal+"&bmrMedium"+bmrMedium} className="text-green-500">Let&apos;s Generate Your Meal Plan</Link>
-            </div>89+
+            </div>
             )}
       </div>
     </div>
