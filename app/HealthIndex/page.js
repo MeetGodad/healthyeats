@@ -55,14 +55,14 @@ const HealthIndex = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-green-300 py-12 px-4 sm:px-6 lg:px-8" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\' viewBox=\'0 0 40 40\'%3E%3Cpath fill=\'%23d2f8d2\' fill-opacity=\'0.9\' d=\'M0 0h20v20H0V0zm20 20h20v20H20V20z\'/%3E%3C/svg%3E")'}}>
-      <p className="text-2xl font-bold mb-4">Let&apos;s Calculate your BMI and BMR</p>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-green-400 py-12 px-4 sm:px-6 lg:px-8" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\' viewBox=\'0 0 40 40\'%3E%3Cpath fill=\'%23d2f8d2\' fill-opacity=\'0.9\' d=\'M0 0h20v20H0V0zm20 20h20v20H20V20z\'/%3E%3C/svg%3E")'}}>
+      <p className="text-2xl font-bold mb-4 bg-green-400 text-green-950">Let&apos;s Calculate your BMI and BMR</p>
       <div className="p-6 max-w-2x1 mx-auto bg-green-900 rounded-xl shadow-md flex items-center space-x-4 border-4 border-green-900">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="mb-4">
             <h3 className="text-xl font-semibold text-white">Enter your Height : </h3>
             <input
-                className="w-full px-3 py-2 border border-green-300 rounded-md"
+                className="w-full px-3 py-2 border border-green-300 rounded-md  text-green-950"
                 type="number"
                 placeholder="Height (cm)"
                 value={height}
@@ -72,7 +72,7 @@ const HealthIndex = () => {
           <div className="mb-4">
             <h3 className="text-xl font-semibold text-white">Enter your Weight : </h3>
             <input
-                className="w-full px-3 py-2 border border-green-300 rounded-md"
+                className="w-full px-3 py-2 border border-green-300 rounded-md text-green-950"
                 type="number"
                 placeholder="Weight (kg)"
                 value={weight}
@@ -82,7 +82,7 @@ const HealthIndex = () => {
           <div className="mb-4">
             <h3 className="text-xl font-semibold text-white">Enter your Age : </h3>
             <input
-              className="w-full px-3 py-2 border border-green-300 rounded-md"
+              className="w-full px-3 py-2 border border-green-300 rounded-md text-green-950"
               type="number"
               placeholder="Age"
               value={age}
@@ -91,16 +91,16 @@ const HealthIndex = () => {
           </div>
           <div className="mb-4">
             <h3 className="text-xl font-semibold text-white">Select your gender : </h3> 
-            <select value={gender}  className="w-full px-3 py-2 border border-green-300 rounded-md" onChange={(e) => setGender(e.target.value)}>
+            <select value={gender}  className="w-full px-3 py-2 border border-green-300 rounded-md text-green-950" onChange={(e) => setGender(e.target.value)}>
               <option  className=" text-gray-900" value="">Select Gender</option>
               <option  className=" text-gray-900" value="male">Male</option>
               <option  className=" text-gray-900" value="female">Female</option>
             </select>
           </div>
         </div>
-        <button className="mb-4 px-4 py-2 bg-green-500 text-white rounded-md" onClick={handleNext} disabled={!height || !weight || !age || !gender}>Next</button>
+        <button className="mb-4 px-4 py-2 bg-green-500 text-green-950" onClick={handleNext} disabled={!height || !weight || !age || !gender}>Next</button>
           {bmi !== null && (
-            <div className="bg-white p-4 rounded-md shadow-md">
+            <div className="bg-white text-green-950 p-4 rounded-md shadow-md">
                 <h3 className="text-2xl font-bold mb-2">Results : </h3>
               <div>  
               <p>BMI: {bmi}</p>

@@ -32,7 +32,7 @@ export default function MealPlan({searchParams}) {
         loadMealPlan();
     }, [dietRestrictions , allergies]);
     return (
-        <div className={`flex justify-center items-center min-h-screen bg-green-300 text-white`}  style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'80\' viewBox=\'0 0 100 100\'%3E%3Cpolygon fill=\'%23ffffff\' fill-opacity=\'0.25\' points=\'50,0 100,0 0,100 0,50\'/%3E%3C/svg%3E")', backgroundPosition: '50% 50%'}} >
+        <div className={`flex justify-center items-center min-h-screen bg-green-300 text-green-950`}  style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'80\' viewBox=\'0 0 100 100\'%3E%3Cpolygon fill=\'%23ffffff\' fill-opacity=\'0.25\' points=\'50,0 100,0 0,100 0,50\'/%3E%3C/svg%3E")', backgroundPosition: '50% 50%'}} >
             <div className={`p-6 max-w-7xl mx-auto rounded-xl shadow-md flex flex-col items-center space-y-4 border-4 border-white bg-green-900`}>    
                 <div className="w-full">
                     <h2 className="text-2xl font-bold mb-4">Select Your Dietary Restriction</h2>
@@ -67,7 +67,7 @@ export default function MealPlan({searchParams}) {
                     type="text"
                     value={allergies} 
                     onChange={(e) => setAllergies(e.target.value)}
-                    className=" w-full px-3 py-2 border border-green-300 rounded-md text-white "/>
+                    className=" w-full px-3 py-2 border border-green-300 rounded-md text-green-950 "/>
                 </div>
             {dietRestrictions != "None"  && mealPlan.week ?
                     Object.keys(mealPlan.week).map((day) => (
