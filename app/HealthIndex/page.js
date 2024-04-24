@@ -4,9 +4,9 @@ import  Link from "next/link";
 
 
 const HealthIndex = () => {
-  const [height, setHeight] = useState(0);
-  const [weight, setWeight] = useState(0);
-  const [age, setAge] = useState(0);
+  const [height, setHeight] = useState();
+  const [weight, setWeight] = useState();
+  const [age, setAge] = useState();
   const [gender, setGender] = useState("");
 
   const [bmi, setBmi] = useState(null);
@@ -98,7 +98,7 @@ const HealthIndex = () => {
             </select>
           </div>
         </div>
-        <button className="mb-4 px-4 py-2 bg-green-500 text-green-950" onClick={handleNext} disabled={!height || !weight || !age || !gender}>Next</button>
+        <button className="mb-4 px-4 py-2 bg-green-500 text-green-950 rounded" onClick={handleNext} disabled={!height || !weight || !age || !gender}>Next</button>
           {bmi !== null && (
             <div className="bg-white text-green-950 p-4 rounded-md shadow-md">
                 <h3 className="text-2xl font-bold mb-2">Results : </h3>
@@ -108,7 +108,15 @@ const HealthIndex = () => {
               <p>BMR (No Exercise): {bmrNormal.toFixed(0)} calories</p>
               <p>BMR (Medium Exercise): {bmrMedium.toFixed(0)} calories</p>
             </div>
-            <Link href={"/MealPlan?bmrNormal="+bmrNormal+"&bmrMedium"+bmrMedium} className="text-green-500">Let&apos;s Generate Your Meal Plan</Link>
+            <Link className="text-green-600"
+            href={{ 
+              pathname: '/MealPlan', 
+              query: { bmrNormal: bmrNormal, bmrMedium: bmrMedium } 
+            }} 
+            as={`/MealPlan?bmrNormal=${bmrNormal}&bmrMedium=${bmrMedium}`}
+          >
+            Let&apos;s Generate Your Meal Plan
+          </Link>
             </div>
             )}
       </div>

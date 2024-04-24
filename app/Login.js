@@ -10,8 +10,6 @@ import { useState, useEffect } from 'react';
 
 export default function Login({}) {
 
-
-
 const {user ,  gitHubSignIn, googleSignIn , firebaseSignOut} = useUserAuth();
 const [hasMealPlan, setHasMealPlan] = useState(false);
 

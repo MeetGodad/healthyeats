@@ -30,7 +30,6 @@ export const loadMealPlan = async (userId, callback) => {
   
     const unsubscribe = onSnapshot(userDocRef, (docSnap) => {
       if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
         callback(docSnap.data().mealPlan);
       } else {
         callback(null);
